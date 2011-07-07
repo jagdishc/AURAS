@@ -7,8 +7,8 @@ def calculate_total_and_percentage(assessment_marks, scoring_system):
       total_credits = 0
       for am in assessment_marks.filter(latest_attempt=True):
          total_scored += am.internal_mark
-         total_scored += ( am.subject.credits * am.external_grade )
-         total_credits += am.subject.credits
+         total_scored += ( am.subject.paper.credits * am.external_grade )
+         total_credits += am.subject.paper.credits
       if total_credits == 0:
          return None,None
       percentage = round(float(total_scored) / total_credits,2) * 10
